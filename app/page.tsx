@@ -1,29 +1,33 @@
-import { DeployButton } from "@/components/deploy-button";
-import { EnvVarWarning } from "@/components/env-var-warning";
-import { AuthButton } from "@/components/auth-button";
-import { Hero } from "@/components/hero";
-import { ThemeSwitcher } from "@/components/theme-switcher";
-import { ConnectSupabaseSteps } from "@/components/tutorial/connect-supabase-steps";
-import { SignUpUserSteps } from "@/components/tutorial/sign-up-user-steps";
-import { hasEnvVars } from "@/lib/utils";
-import Link from "next/link";
-import { Suspense } from "react";
-import { SidebarTrigger } from "@/components/ui/sidebar";
-import NavbarDemo from "@/components/resizable-navbar-demo";
-import { LatestSlider } from "@/components/landing/latestSlider";
 import { ItemsList } from "@/components/landing/itemsList";
+import { LatestSlider } from "@/components/landing/latestSlider";
+import CustomNavbar from "@/components/resizable-navbar-demo";
 
 export default function Home() {
   return (
     <main >
       <div className="relative w-full">
+        <CustomNavbar />
 
-        <NavbarDemo />
+        <div className="container mx-auto p-8 pt-24 ">
+          <div className="my-8">
+            <div className="text-center space-y-4">
 
-        <div className="container mx-auto p-8 pt-24">
-          <h1 className="mb-4 text-center text-3xl font-bold">
-            Check the navbar at the top of the container
-          </h1>
+              <span className="inline-block px-4 py-1 text-sm rounded-full border bg-white/50 dark:bg-neutral-900/50 backdrop-blur">
+                🐟 Premium Quality Dry Fish
+              </span>
+
+              <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight">
+                <span className="bg-gradient-to-r from-primary via-blue-500 to-cyan-500 bg-clip-text text-transparent">
+                  CEYLON Dry Fish Mart
+                </span>
+              </h1>
+
+              <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto">
+                Bringing you the finest selection of traditional Sri Lankan dry fish — fresh, flavorful, and trusted quality.
+              </p>
+
+            </div>
+          </div>
           <LatestSlider />
           <ItemsList />
         </div>

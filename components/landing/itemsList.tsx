@@ -1,10 +1,55 @@
-import { ItemCard } from "./itemCard"
+import { Button } from "../ui/button"
+import { ItemCard } from "../ui/item-card"
 
 export const ItemsList = () => {
-    const items = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-    return <div className="grid grid-cols-3 gap-4">
-        {items.map((item) => (
-            <ItemCard key={item} /> 
-        ))}
+    const items = [
+        {
+            itemName: "item1",
+            image: 'https://www.uwphotographyguide.com/wp-content/uploads/2015/10/0689-16022008-181-Amphiprion_melanopus.jpg',
+            category: "category1",
+            price: 800,
+            desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus, voluptate.'
+        },
+        {
+            itemName: "item1",
+            image: 'https://www.uwphotographyguide.com/wp-content/uploads/2015/10/0689-16022008-181-Amphiprion_melanopus.jpg',
+            category: "category1",
+            price: 800,
+            desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus, voluptate.'
+        },
+        {
+            itemName: "item1",
+            image: 'https://www.uwphotographyguide.com/wp-content/uploads/2015/10/0689-16022008-181-Amphiprion_melanopus.jpg',
+            category: "category1",
+            price: 800,
+            desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus, voluptate.'
+        },
+        {
+            itemName: "item1",
+            image: 'https://www.uwphotographyguide.com/wp-content/uploads/2015/10/0689-16022008-181-Amphiprion_melanopus.jpg',
+            category: "category1",
+            price: 800,
+            desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus, voluptate.'
+        },
+        {
+            itemName: "item1",
+            image: 'https://www.uwphotographyguide.com/wp-content/uploads/2015/10/0689-16022008-181-Amphiprion_melanopus.jpg',
+            category: "category1",
+            price: 800,
+            desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus, voluptate.'
+        },
+        {
+            itemName: "item1",
+            image: 'https://www.uwphotographyguide.com/wp-content/uploads/2015/10/0689-16022008-181-Amphiprion_melanopus.jpg',
+            category: "category1",
+            price: 800,
+            desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus, voluptate.'
+        }
+    ]
+    return <div className="w-full">
+        <ItemCard items={items ?? []} />
+        <div className="flex justify-center w-full">
+            <Button>Load More</Button>
+        </div>
     </div>
 }

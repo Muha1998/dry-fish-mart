@@ -11,20 +11,25 @@ import {
   MobileNavMenu,
 } from "@/components/ui/resizable-navbar";
 import { useState } from "react";
+import { ThemeSwitcher } from "./theme-switcher";
 
-export default function NavbarDemo() {
+export default function CustomNavbar() {
   const navItems = [
     {
-      name: "Features",
-      link: "#features",
+      name: "Home",
+      link: "/",
     },
     {
-      name: "Pricing",
-      link: "#pricing",
+      name: "Offers",
+      link: "/offers",
+    },
+    {
+      name: "Receipes",
+      link: "/receipes",
     },
     {
       name: "Contact",
-      link: "#contact",
+      link: "/contact",
     },
   ];
 
@@ -35,9 +40,9 @@ export default function NavbarDemo() {
       <NavBody>
         <NavbarLogo />
         <NavItems items={navItems} />
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-4 z-50">
+          <ThemeSwitcher />
           <NavbarButton variant="secondary">Login</NavbarButton>
-          <NavbarButton variant="primary">Book a call</NavbarButton>
         </div>
       </NavBody>
       <MobileNav>
