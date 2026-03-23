@@ -9,3 +9,9 @@ export function cn(...inputs: ClassValue[]) {
 export const hasEnvVars =
   process.env.NEXT_PUBLIC_SUPABASE_URL &&
   process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY;
+
+export const ItemAvaiability = {
+  INSTOCK: "IN-STOCK",
+  PREORDER: "PRE-ORDER",
+  OUTOFSTOCK: "OUT-OF-STOCK"
+}

@@ -1,13 +1,11 @@
 import { ItemsList } from "@/components/landing/itemsList";
 import { LatestSlider } from "@/components/landing/latestSlider";
-import CustomNavbar from "@/components/resizable-navbar-demo";
+import HeaderCustomText from "@/components/layout-text-flip-demo";
 
 export default function Home() {
   return (
     <main >
       <div className="relative w-full">
-        <CustomNavbar />
-
         <div className="container mx-auto p-8 pt-24 ">
           <div className="my-8">
             <div className="text-center space-y-4">
@@ -16,11 +14,13 @@ export default function Home() {
                 🐟 Premium Quality Dry Fish
               </span>
 
-              <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight">
+              <HeaderCustomText />
+
+              {/* <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight">
                 <span className="bg-gradient-to-r from-primary via-blue-500 to-cyan-500 bg-clip-text text-transparent">
-                  CEYLON Dry Fish Mart
+                  කරවල කඩේ
                 </span>
-              </h1>
+              </h1> */}
 
               <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto">
                 Bringing you the finest selection of traditional Sri Lankan dry fish — fresh, flavorful, and trusted quality.

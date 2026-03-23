@@ -10,8 +10,14 @@ import {
   MobileNavToggle,
   MobileNavMenu,
 } from "@/components/ui/resizable-navbar";
-import { useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { ThemeSwitcher } from "./theme-switcher";
+import { Button } from "./ui/button";
+import { LogOut, ShoppingCart } from "lucide-react";
+import { User } from "@supabase/supabase-js";
+import { createClient } from "@/lib/supabase/client";
+import { get } from "http";
+import { AuthButton } from "./auth-button";
 
 export default function CustomNavbar() {
   const navItems = [
@@ -34,6 +40,31 @@ export default function CustomNavbar() {
   ];
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+
+  async function getUserDetails() {
+    const supabase = await createClient();
+
+    const { data, error } = await supabase.auth.getClaims();
+
+    if (error || !data?.claims) {
+      setIsLoggedIn(false);
+    } else {
+      setIsLoggedIn(true);
+    }
+  }
+
+  async function signOut() {
+    const supabase = await createClient();
+
+    await supabase.auth.signOut();
+
+    getUserDetails();
+  }
+
+  useEffect(() => {
+    getUserDetails();
+  }, [])
 
   return (
     <Navbar>
@@ -42,9 +73,12 @@ export default function CustomNavbar() {
         <NavItems items={navItems} />
         <div className="flex items-center gap-4 z-50">
           <ThemeSwitcher />
-          <NavbarButton variant="secondary">Login</NavbarButton>
+          <Button variant="ghost" size={"sm"}><ShoppingCart /></Button>
+          <div>
+            <AuthButton />
+          </div>
         </div>
-      </NavBody>
+      </NavBody >
       <MobileNav>
         <MobileNavHeader>
           <NavbarLogo />
@@ -69,6 +103,7 @@ export default function CustomNavbar() {
             </a>
           ))}
           <div className="flex w-full flex-col gap-4">
+            <ThemeSwitcher />
             <NavbarButton
               onClick={() => setIsMobileMenuOpen(false)}
               variant="primary"
@@ -76,16 +111,9 @@ export default function CustomNavbar() {
             >
               Login
             </NavbarButton>
-            <NavbarButton
-              onClick={() => setIsMobileMenuOpen(false)}
-              variant="primary"
-              className="w-full"
-            >
-              Book a call
-            </NavbarButton>
           </div>
         </MobileNavMenu>
       </MobileNav>
-    </Navbar>
+    </Navbar >
   );
 }

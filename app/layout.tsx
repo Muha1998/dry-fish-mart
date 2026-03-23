@@ -3,6 +3,10 @@ import { Geist } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import "./globals.css";
 import { SidebarProvider } from "@/components/ui/sidebar";
+import CustomFloatingDock from "@/components/custom-floating-dock";
+import NavbarDemo from "@/components/navbar-menu-demo";
+import CustomNavbar from "@/components/resizable-navbar-demo";
+import Footer from "@/components/common/footer";
 
 const defaultUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
@@ -10,7 +14,7 @@ const defaultUrl = process.env.VERCEL_URL
 
 export const metadata: Metadata = {
   metadataBase: new URL(defaultUrl),
-  title: "Ceylon Dry Fish Mart",
+  title: "කරවල කඩේ",
   description: "",
 };
 
@@ -27,20 +31,23 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${geistSans.className} antialiased`}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <SidebarProvider>
-            <main className="flex-1 z-10">
-              {children}
-            </main>
-          </SidebarProvider>
-        </ThemeProvider>
-      </body>
+      <ThemeProvider
+        attribute="class"
+        defaultTheme="system"
+        enableSystem
+        disableTransitionOnChange
+      >
+        <body className={`${geistSans.className} antialiased`}>
+
+          <CustomNavbar />
+          {children}
+
+          <div className="fixed bottom-4 w-full items-center z-20">
+            <CustomFloatingDock />
+          </div>
+          <Footer />
+        </body>
+      </ThemeProvider>
     </html>
   );
 }
